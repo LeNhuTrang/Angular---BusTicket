@@ -1,0 +1,30 @@
+<div class="container">
+  <h1 class="text-center text-warning  mt-3 mb-5">ĐẶT VÉ XE BUÝT</h1>
+
+  <div class="row mb-5">
+    <div class="col-6 mx-auto">
+      <h5 class="text-center bg-warning w-50 mx-auto py-2 text-light">Tài xế</h5>
+      <div class="col-6 mx-auto pt-3 bg-light">
+        <app-ghe
+          *ngFor="let ghe of danhSachGhe; index as idx"
+          [itemGhe]="ghe"
+          (emitStatus)="datGheParent(idx)"
+        ></app-ghe>
+      </div>
+
+    </div>
+
+    <div class="mx-auto col-6">
+      <h5 class="py-2 mx-auto">Số ghế đặt ({{DanhSachGheDangDat.length}})</h5>
+      <p class="" *ngFor="let ghe of DanhSachGheDangDat; index as idx">
+        <span>Tên Ghế: {{ ghe.TenGhe }}, </span>
+        <span> Giá: {{ ghe.Gia }}</span>
+        <a type="button" class="ml-3" (click)="huyGheParent(idx)">[Hủy]</a>
+      </p>
+      <hr>
+
+      <p class="font-weight-bold">Tổng cộng: $ {{ totalPrice }}</p>
+      <p class="text-dark">Số Ghế còn lại: {{ soGheConLai }}</p>
+    </div>
+  </div>
+</div>
